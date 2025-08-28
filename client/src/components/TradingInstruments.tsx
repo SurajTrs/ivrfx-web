@@ -115,7 +115,7 @@ const TradingInstruments: React.FC = () => {
       </div>
           {/* Bottom action */}
           <div className="offers-actions">
-          <a href="/register" className="register-btn" aria-label="Register for an account">
+          <a href="/auth/register" className="register-btn" aria-label="Register for an account">
             Register
           </a>
         </div>

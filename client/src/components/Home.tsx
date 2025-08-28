@@ -33,9 +33,9 @@ const Home: React.FC = () => {
               Experience next-level trading with powerful charts,
               fast execution, and competitive spreads.
             </p>
-            <button className="btn btn-lg btn-purple px-4 py-2 mb-4">
+            <a href="/auth/register" className="btn btn-lg btn-purple px-4 py-2 mb-4" aria-label="Get started by registering an account">
               Get started
-            </button>
+            </a>
 
             <div className="mt-4 fs-5">
               <span>Great </span>

@@ -12,37 +12,37 @@ const cards: Card[] = [
   {
     title: "Mobile App",
     subtitle: "The only app you need to trade seamlessly!",
-    href: "#",
+    href: "/trading/trading-app",
     image: "/images/trading-illustration.png",
   },
   {
     title: "TradingView",
     subtitle: "Unleash the power of TradingView with IVRFX",
-    href: "#",
+    href: "/trading/trading-central",
     image: "/images/bg-pattern.jpg",
   },
   {
     title: "Social Trading App",
     subtitle: "Follow top traders and learn from the best!",
-    href: "#",
+    href: "/trading/social-trading",
     image: "/images/bg-pattern1.jpg",
   },
   {
     title: "Desktop",
     subtitle: "Rich in features and benefits with unique analytic tools",
-    href: "#",
+    href: "/trading/mt5",
     image: "/images/trading-illustration1.png",
   },
   {
     title: "MetaTrader 5",
     subtitle: "MT4's more powerful and advanced upgrade",
-    href: "#",
+    href: "/trading/mt5",
     image: "/images/bg-pattern1.jpg",
   },
   {
     title: "MetaTrader 4",
     subtitle: "Still the most popular and easy to use!",
-    href: "#",
+    href: "/trading/mt4",
     image: "/images/bg-pattern.jpg",
   },
 ];

@@ -28,13 +28,13 @@ const MarketInsights: React.FC = () => {
             </p>
 
             <p className="mb-3 insights-link">
-              <a href="#" className="insights-anchor">Visit Education Centre</a>
+              <a href="/learn/academy" className="insights-anchor" aria-label="Visit Education Centre">Visit Education Centre</a>
               <span className="ms-1" aria-hidden>›</span>
             </p>
 
-            <button className="insights-cta btn btn-success fw-semibold px-4 py-2">
+            <a href="/trading/social-trading" className="insights-cta btn btn-success fw-semibold px-4 py-2" aria-label="Join our trading community">
               Join our trading community
-            </button>
+            </a>
           </div>
 
           {/* Right column card */}
@@ -56,7 +56,7 @@ const MarketInsights: React.FC = () => {
                 <p className="text-muted mb-3 insights-desc">
                   Take advantage of 40+ years of expertise with Charlie Burton and Ali Crooks
                 </p>
-                <a href="#" className="insights-watch">Watch all ↗</a>
+                <a href="/events/traders-clinic" className="insights-watch" aria-label="Watch all Trader's Clinic episodes">Watch all ↗</a>
               </div>
             </article>
           </div>

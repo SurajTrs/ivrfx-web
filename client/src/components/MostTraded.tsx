@@ -170,7 +170,7 @@ export default function MostTraded() {
                     <Spark changePercent={r.changePercent} />
                   </div>
                   <div className="mt-cta">
-                    <a className="mt-trade" href="#">Trade Now</a>
+                    <a className="mt-trade" href="/auth/register" aria-label={`Trade ${r.symbol} now by creating an account`}>Trade Now</a>
                   </div>
                 </div>
               );
@@ -182,7 +182,7 @@ export default function MostTraded() {
         </div>
       </div>
       <div className="mt-cta-bottom">
-        <a href="#" className="start-btn">Start Trading Now</a>
+        <a href="/auth/register" className="start-btn" aria-label="Start trading now by registering an account">Start Trading Now</a>
       </div>
     </section>
   );
