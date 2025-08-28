@@ -921,7 +921,7 @@
 }
 
 /* ===== Trust Highlights (Markets-like cards) ===== */
-.trust-wrap { background: #f7f8fb; padding: 36px 16px 56px; }
+.trust-wrap { background: #f7f8fb; padding: 36px 16px 56px; overflow: visible; }
 .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; gap: 18px; }
 
 .trust-card {
@@ -964,7 +964,7 @@
 .trust-img { width: 100%; height: auto; object-fit: contain; border-radius: 12px; }
 
 /* Grid (3 x 2) compact cards */
-.trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; overflow: visible; }
 .trust-mini {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -981,7 +981,7 @@
 .trust-mini-copy { padding: 4px 6px; }
 .trust-mini-title { margin: 6px 0 6px; font-size: 18px; font-weight: 800; color: #15192d; }
 .trust-mini-desc { margin: 0; color: #727893; font-size: 14.5px; line-height: 1.6; }
-.trust-mini-media { display: flex; justify-content: center; align-items: center; }
+.trust-mini-media { display: flex; justify-content: center; align-items: center; overflow: visible; }
 .trust-mini-img { width: 100%; height: auto; object-fit: contain; border-radius: 10px; }
 
 @media (max-width: 1100px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
