@@ -27,6 +27,41 @@ export default function FooterDisclaimer() {
           </ul>
         </div>
       </div>
+      <style jsx>{`
+        .footer-legal-wrap {
+          position: relative;
+          background: radial-gradient(1200px 300px at 50% 0%, rgba(124,58,237,0.12), transparent 60%), #000;
+          color: #cbd5e1; /* slate-300 */
+          padding: 2rem 0 2.5rem;
+          border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-legal-wrap::before {
+          content: "";
+          position: absolute; inset: 0 0 auto 0; height: 1px;
+          background: linear-gradient(90deg, rgba(124,58,237,0.6), rgba(56,189,248,0.6));
+          opacity: .9;
+        }
+        .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .legal-text { font-size: .98rem; line-height: 1.8; letter-spacing: .2px; color: #cbd5e1; }
+        @media (min-width: 768px) { .legal-text { font-size: 1rem; } }
+        .legal-text p { margin-bottom: 1rem; color: #b8c2d1; }
+        .legal-text a {
+          color: #e2e8f0;
+          text-decoration: none;
+          background-image: linear-gradient(90deg, #7c3aed, #1ea7fd);
+          background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%;
+          transition: color .2s ease, background-size .2s ease;
+        }
+        .legal-text a:hover { color: #fff; background-size: 100% 2px; }
+        .legal-text a:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,.35); border-radius: 3px; }
+        .legal-list { margin: .75rem 0 0; padding: 0; color: #cbd5e1; list-style: none; display: grid; gap: .5rem; }
+        .legal-list li { position: relative; padding-left: 1.25rem; }
+        .legal-list li::before {
+          content: ""; position: absolute; left: 0; top: .6rem; width: 8px; height: 8px; border-radius: 999px;
+          background: conic-gradient(from 0deg, #ff6b6b, #f59e0b, #22c55e, #1ea7fd, #7c3aed, #ff6b6b);
+          box-shadow: 0 0 0 2px rgba(255,255,255,0.06);
+        }
+      `}</style>
     </section>
   );
 }

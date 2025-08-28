@@ -332,10 +332,8 @@ const Navbar: React.FC = () => {
 
         {/* Right Section */}
         <div className="d-flex align-items-center gap-3">
-          <i className="bi bi-search text-white fs-5"></i>
           <select className="bg-black border-0 text-white small px-2">
             <option>EN</option>
-            <option>FR</option>
           </select>
           <Link href="/auth/login" className="btn btn-outline-light btn-sm px-3">Login</Link>
           <Link href="/auth/register" className="btn btn-success btn-sm px-3">Sign Up</Link>
