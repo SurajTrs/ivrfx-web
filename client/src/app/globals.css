@@ -3,14 +3,17 @@
   width: 100%;
   padding: 56px 16px 72px;
   color: #000;
-  position: relative; /* ensure its children don't overlap next section */
-  overflow: hidden;   /* clip any decorative elements */
+  position: relative; 
+  overflow: hidden;  
   z-index: 0; /* keep below previous section if edges touch */
   background: #fff; /* ensure a solid white backdrop */
   margin-top: 24px; /* add separation from previous section */
 }
+
+html, body { overflow-x: hidden; }
+
 .offers-wrap .title { color: #000; }
-/* Ensure gradient class doesn't affect Available Offers heading */
+
 .offers-wrap .title.gradient-text {
   background: none !important;
   -webkit-text-fill-color: #000 !important;
@@ -29,7 +32,6 @@
 .register-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(107,124,255,0.45); filter: brightness(1.03); }
 .register-btn:active { transform: translateY(0); box-shadow: 0 6px 16px rgba(107,124,255,0.35); }
 
-/* AvailableOffers: force light card + black text inside */
 .offers-wrap .hero-card {
   background: #ffffff;
   border: 1px solid rgba(17,19,37,0.08);
@@ -241,7 +243,6 @@
 }
 .platform-card-wrap:hover .platform-card-img { transform: scale(1.06); }
 
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .platform-card-wrap .platform-card,
   .platform-card-img { transition: none; }
@@ -249,7 +250,6 @@
   .platform-card-wrap:hover .platform-card-img { transform: none; }
 }
 
-/* Responsive: make cards smaller on mobile */
 @media (max-width: 768px) {
   .platform-card { min-height: 200px; }
   .platform-card.tall { min-height: 280px; }
