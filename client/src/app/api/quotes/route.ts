@@ -14,7 +14,13 @@ export async function GET(req: NextRequest) {
     if (!symbols) {
       return new Response(JSON.stringify({ error: "symbols query is required" }), { status: 400 });
     }
-    const list = symbols.split(",").map((s) => s.trim()).filter(Boolean);
+    // Symbols may be URL-encoded from the client (e.g., XAU%2FUSD). Decode before alias mapping.
+    const list = symbols
+      .split(",")
+      .map((s) => {
+        try { return decodeURIComponent(s.trim()); } catch { return s.trim(); }
+      })
+      .filter(Boolean);
 
     // Map UI-friendly aliases to Twelve Data compatible symbols.
     // We preserve the original alias for display while fetching using provider symbols.

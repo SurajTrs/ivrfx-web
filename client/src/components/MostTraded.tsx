@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 type QuoteRow = {
@@ -54,69 +54,79 @@ function formatNumber(n: number | null) {
   return new Intl.NumberFormat(undefined, opts).format(n);
 }
 
-function Spark({ changePercent }: { changePercent: number | null }) {
-  // Simple sparkline approximation based on change direction
-  const points = useMemo(() => {
-    const base = [2, 6, 4, 8, 5, 9, 7, 11, 8, 12];
-    const dir = (changePercent ?? 0) >= 0 ? 1 : -1;
-    return base.map((v, i) => `${i * 6},${14 - v * 0.9 * (dir > 0 ? 1 : 0.9)}`).join(" ");
-  }, [changePercent]);
-  const up = (changePercent ?? 0) >= 0;
-  return (
-    <svg width={64} height={16} viewBox="0 0 60 16" className={`mt-spark ${up ? "up" : "down"}`} aria-hidden>
-      <polyline fill="none" strokeWidth="2" stroke={up ? "#22c55e" : "#ef4444"} points={points} />
-      <defs>
-        <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor={up ? "#22c55e" : "#ef4444"} stopOpacity="0.25" />
-          <stop offset="100%" stopColor={up ? "#22c55e" : "#ef4444"} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
+// Map symbols to TradingView format (subset of the main mapping)
+function toTVSymbol(s: string) {
+  const raw = s.toUpperCase().trim();
+  const clean = raw.replace(/\s+/g, "");
+  const noslash = clean.replace("/", "");
+  if (clean.includes(":")) return clean;
+  // Crypto first (support both BTC/USD and BTCUSD)
+  const cryptoMap: Record<string, string> = {
+    BTCUSD: "COINBASE:BTCUSD",
+    ETHUSD: "COINBASE:ETHUSD",
+    LTCUSD: "COINBASE:LTCUSD",
+  };
+  if (cryptoMap[noslash]) return cryptoMap[noslash];
+  // Indices next
+  const indicesMap: Record<string, string> = {
+    US100: "TVC:NDX",
+    US500: "TVC:SPX",
+    DJI: "TVC:DJI",
+  };
+  if (indicesMap[clean]) return indicesMap[clean];
+  // Commodities (prefer provider tickers over FX)
+  const commoditiesMap: Record<string, string> = {
+    XAUUSD: "TVC:GOLD",   // broader availability than broker feed
+    XAGUSD: "TVC:SILVER",
+    WTI: "TVC:USOIL",
+    BRENT: "TVC:UKOIL",
+  };
+  if (commoditiesMap[noslash]) return commoditiesMap[noslash];
+  // FX pairs
+  if (/^[A-Z]{3}\/[A-Z]{3}$/.test(raw)) return `FX:${noslash}`;
+  if (/^[A-Z]{6}$/.test(clean)) return `FX:${clean}`;
+  // Default equities guess
+  if (/^[A-Z.]{1,5}$/.test(clean)) return `NASDAQ:${clean}`;
+  return clean;
+}
+
+function RowChart({ symbol }: { symbol: string }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const tvSymbol = useMemo(() => toTVSymbol(symbol), [symbol]);
+  useEffect(() => {
+    const elNow = ref.current;
+    if (!elNow) return;
+    // Use Mini Symbol Overview embed for compact charts
+    elNow.innerHTML = "";
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.async = true;
+    const config = {
+      symbol: tvSymbol,
+      // Let widget auto-size to container width/height
+      autosize: true,
+      locale: "en",
+      dateRange: "1D",
+      colorTheme: "dark",
+      trendLineColor: "#21c55d",
+      underLineColor: "rgba(34, 197, 94, 0.15)",
+      isTransparent: true,
+      largeChartUrl: "",
+    } as any;
+    script.innerHTML = JSON.stringify(config);
+    elNow.appendChild(script);
+    return () => { if (ref.current) ref.current.innerHTML = ""; };
+  }, [tvSymbol]);
+  // Container controls responsive size via CSS (.tv-mini)
+  return <div ref={ref} className="tv-mini" />;
 }
 
 export default function MostTraded() {
   const [active, setActive] = useState(CATEGORIES[0].key);
-  const [rows, setRows] = useState<QuoteRow[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
+  // Chart-only mode: derive rows from active symbols (no quote API)
   const activeSymbols = useMemo(() => CATEGORIES.find((c) => c.key === active)?.symbols || [], [active]);
-
-  useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        setLoading(true);
-        setError(null);
-        // Encode each symbol but keep comma separators so the server can split correctly
-        const symbolsParam = activeSymbols.map((s) => encodeURIComponent(s)).join(",");
-        const r = await fetch(`/api/quotes?symbols=${symbolsParam}`, { cache: "no-store" });
-        const js = await r.json();
-        if (!r.ok) throw new Error(js?.error || "Failed to load");
-        const list: QuoteRow[] = (js?.quotes || []).map((q: any) => ({
-          symbol: q.symbol,
-          shortName: q.shortName,
-          bid: q.bid,
-          ask: q.ask,
-          changePercent: q.changePercent,
-          price: q.price,
-          currency: q.currency,
-        }));
-        if (!cancelled) setRows(list);
-      } catch (e: any) {
-        if (!cancelled) setError(e?.message || "Failed to load");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-    load();
-    const id = setInterval(load, 10_000);
-    return () => {
-      cancelled = true;
-      clearInterval(id);
-    };
-  }, [activeSymbols.join(",")]);
+  const rows = useMemo(() => activeSymbols.map((s) => ({ symbol: s, shortName: s } as any)), [activeSymbols]);
 
   return (
     <section className="mt-wrap">
@@ -138,23 +148,11 @@ export default function MostTraded() {
           <h3 className="mt-title">Most Traded</h3>
           <div className="mt-head">
             <span>Asset</span>
-            <span>Sell</span>
-            <span>Buy</span>
-            <span>Change (%)</span>
+            <span>Chart</span>
             <span />
           </div>
           <div className="mt-body">
-            {loading && rows.length === 0 && (
-              <div className="mt-empty">Loading quotes…</div>
-            )}
-            {error && rows.length === 0 && (
-              <div className="mt-empty error">{error}</div>
-            )}
             {rows.map((r) => {
-              const change = r.changePercent ?? 0;
-              const neg = change < 0;
-              const sell = r.bid ?? r.price;
-              const buy = r.ask ?? r.price;
               const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\s+/g, "").replace(/\//g, "-"));
               return (
                 <div key={r.symbol} className="mt-row">
@@ -165,11 +163,11 @@ export default function MostTraded() {
                       <span className="mt-sym">{r.symbol}</span>
                     </div>
                   </div>
-                  <div className="mt-sell"><span className="pill light">{formatNumber(sell)}</span></div>
-                  <div className="mt-buy"><span className="pill light">{formatNumber(buy)}</span></div>
-                  <div className={`mt-change ${neg ? "neg" : "pos"}`}>{(change).toFixed(2)}%</div>
                   <div className="mt-chart">
-                    <Spark changePercent={r.changePercent} />
+                    <RowChart symbol={r.symbol} />
+                  </div>
+                  <div className="mt-chart">
+                    {/* spacer for layout if needed */}
                   </div>
                   <div className="mt-cta">
                     <Link
@@ -183,9 +181,6 @@ export default function MostTraded() {
                 </div>
               );
             })}
-            {!loading && rows.length === 0 && !error && (
-              <div className="mt-empty">No data</div>
-            )}
           </div>
         </div>
       </div>

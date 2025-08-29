@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
     };
   }, []);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow-sm py-3 fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow-sm pt-3 pb-0 fixed-top">
       <div className="container">
         {/* Brand */}
         <a className="navbar-brand" href="/">
@@ -158,13 +158,23 @@ const Navbar: React.FC = () => {
             src="/images/logo.jpg" 
             alt="IVRFX Logo" 
             height="80" 
+            width="90"
             className="d-inline-block align-text-top"
           />
         </a>
 
+        {/* Mobile actions between brand and toggler */}
+        <div className="d-flex d-lg-none align-items-center gap-1 mx-auto mobile-actions">
+          <select className="bg-black border-0 text-white small px-2">
+            <option>EN</option>
+          </select>
+          <Link href="/auth/login" className="btn btn-outline-light btn-sm px-1">Login</Link>
+          <Link href="/auth/register" className="btn btn-success btn-sm px-1">Sign Up</Link>
+        </div>
+
         {/* Toggler (Mobile Menu Button) */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ms-auto"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -189,7 +199,7 @@ const Navbar: React.FC = () => {
               >
                 Markets
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu" aria-labelledby="marketsDropdown">
+              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu mt-4" aria-labelledby="marketsDropdown">
                 <li className="mega-col">
                   <h6 className="dropdown-header">Products</h6>
                   <ul className="list-unstyled m-0">
@@ -215,7 +225,7 @@ const Navbar: React.FC = () => {
               >
                 Trading
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu" aria-labelledby="tradingDropdown">
+              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu mt-4" aria-labelledby="tradingDropdown">
                 <li className="mega-col">
                   <h6 className="dropdown-header">Trading Platforms</h6>
                   <ul className="list-unstyled m-0">
@@ -252,7 +262,7 @@ const Navbar: React.FC = () => {
               >
                 Learn
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu" aria-labelledby="learnDropdown">
+              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu mt-4" aria-labelledby="learnDropdown">
               <li className="mega-col">
                   <h6 className="dropdown-header">Trading Info</h6>
                   <ul className="list-unstyled m-0">
@@ -285,7 +295,7 @@ const Navbar: React.FC = () => {
               >
                 Partnerships
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="partnershipsDropdown">
+              <ul className="dropdown-menu dropdown-menu-dark shadow mt-4" aria-labelledby="partnershipsDropdown">
                 <li><a className="dropdown-item" href="/partnerships/affiliation">Affiliation</a></li>
                 <li><a className="dropdown-item" href="/partnerships/ib">IB</a></li>
               </ul>
@@ -301,7 +311,7 @@ const Navbar: React.FC = () => {
               >
                 About
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu" aria-labelledby="aboutDropdown">
+              <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu mt-4" aria-labelledby="aboutDropdown">
                 <li className="mega-col">
                   <h6 className="dropdown-header">Company</h6>
                   <ul className="list-unstyled m-0">
@@ -330,8 +340,8 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
 
-        {/* Right Section */}
-        <div className="d-flex align-items-center gap-3">
+        {/* Right Section (desktop) */}
+        <div className="d-none d-lg-flex align-items-center gap-3">
           <select className="bg-black border-0 text-white small px-2">
             <option>EN</option>
           </select>

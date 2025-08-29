@@ -198,3 +198,10 @@
   .features-section { color: #fff; }
   .features-section .feature-card h5 { color: #fff; }
   .features-section .feature-card p { color: #fff; }
+
+  /* ===== MostTraded: responsive mini chart ===== */
+  .tv-mini { width: 100%; height: 56px; }
+  @media (min-width: 576px) { .tv-mini { height: 60px; } }
+  @media (min-width: 768px) { .tv-mini { height: 64px; } }
+  @media (min-width: 992px) { .tv-mini { height: 72px; } }
+  @media (min-width: 1200px) { .tv-mini { height: 80px; } }
