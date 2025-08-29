@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Reveal from "components/Reveal";
 import { popularBonds } from "app/bondspage/data";
 
@@ -16,6 +17,9 @@ export default function PopularBonds() {
               </div>
               <h2 className="h1 m-0">Trade benchmark bond markets</h2>
             </div>
+          </Reveal>
+          <Reveal as="a" href="/bonds" className="btn btn-outline-dark btn-sm hover-lift">
+            View all
           </Reveal>
         </div>
 
@@ -47,7 +51,14 @@ export default function PopularBonds() {
                   </div>
 
                   <div className="d-flex gap-2">
-                    <button className="btn w-100" style={{ background: "#9b51e0", color: "#fff", borderColor: "#9b51e0" }}>Trade</button>
+                    <Link
+                      href={`/trade/${encodeURIComponent(p.symbol.toUpperCase().replace(/\//g, "-"))}`}
+                      className="btn w-100"
+                      aria-label={`Trade ${p.symbol}`}
+                      style={{ background: "#9b51e0", color: "#fff", borderColor: "#9b51e0" }}
+                    >
+                      Trade
+                    </Link>
                     <button className="btn w-100" style={{ background: "transparent", color: "#9b51e0", border: "1px solid rgba(155,81,224,0.5)" }}>Details</button>
                   </div>
                 </div>

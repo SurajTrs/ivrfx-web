@@ -2,6 +2,7 @@
 import React from "react";
 import Reveal from "components/Reveal";
 import { popular } from "./data";
+import Link from "next/link";
 
 export default function PopularCommodities() {
   return (
@@ -31,7 +32,7 @@ export default function PopularCommodities() {
               <h2 className="h1 m-0">Popular commodities</h2>
             </div>
           </Reveal>
-          <Reveal as="a" href="#" className="btn btn-outline-dark btn-sm hover-lift">
+          <Reveal as="a" href="/commodities" className="btn btn-outline-dark btn-sm hover-lift">
             View all
           </Reveal>
         </div>
@@ -81,7 +82,19 @@ export default function PopularCommodities() {
                       </div>
                     </div>
                     <div className="mt-3 d-flex gap-2">
-                      <a href="#" className="btn btn-sm btn-success flex-grow-1 hover-lift">Trade</a>
+                      {(() => {
+                        const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\//g, "-"));
+                        const href = `/trade/${toParam(r.ticker)}`;
+                        return (
+                          <Link
+                            href={href}
+                            className="btn btn-sm btn-success flex-grow-1 hover-lift"
+                            aria-label={`Trade ${r.ticker}`}
+                          >
+                            Trade
+                          </Link>
+                        );
+                      })()}
                       <a href="#" className="btn btn-sm btn-outline-dark hover-lift">Details</a>
                     </div>
                   </div>

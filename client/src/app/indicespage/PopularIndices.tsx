@@ -2,6 +2,7 @@
 import React from "react";
 import Reveal from "components/Reveal";
 import { popularIndices } from "app/indicespage/data";
+import Link from "next/link";
 
 export default function PopularIndices() {
   return (
@@ -30,6 +31,9 @@ export default function PopularIndices() {
               </div>
               <h2 className="h1 m-0">Trade major global indices</h2>
             </div>
+          </Reveal>
+          <Reveal as="a" href="/indices" className="btn btn-outline-dark btn-sm hover-lift">
+            View all
           </Reveal>
         </div>
 
@@ -63,7 +67,19 @@ export default function PopularIndices() {
                   </div>
 
                   <div className="d-flex gap-2">
-                    <button className="btn btn-success w-100">Trade</button>
+                    {(() => {
+                      const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\//g, "-"));
+                      const href = `/trade/${toParam(i.ticker)}`;
+                      return (
+                        <Link
+                          href={href}
+                          className="btn btn-success w-100"
+                          aria-label={`Trade ${i.ticker}`}
+                        >
+                          Trade
+                        </Link>
+                      );
+                    })()}
                     <button className="btn btn-outline-secondary w-100">Details</button>
                   </div>
                 </div>

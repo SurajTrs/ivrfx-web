@@ -10,7 +10,7 @@ const FAQCTA: React.FC = () => (
       </div>
       <div className="d-flex gap-2">
         <a href="/help/faq" className="btn btn-outline-purple">FAQs</a>
-        <a href="/support" className="btn btn-success">Contact Support</a>
+        <a href="/support/contact-support" className="btn btn-success">Contact Support</a>
       </div>
     </div>
   </section>

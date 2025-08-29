@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 type QuoteRow = {
   symbol: string;
@@ -154,6 +155,7 @@ export default function MostTraded() {
               const neg = change < 0;
               const sell = r.bid ?? r.price;
               const buy = r.ask ?? r.price;
+              const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\s+/g, "").replace(/\//g, "-"));
               return (
                 <div key={r.symbol} className="mt-row">
                   <div className="mt-asset">
@@ -170,7 +172,13 @@ export default function MostTraded() {
                     <Spark changePercent={r.changePercent} />
                   </div>
                   <div className="mt-cta">
-                    <a className="mt-trade" href="/auth/register" aria-label={`Trade ${r.symbol} now by creating an account`}>Trade Now</a>
+                    <Link
+                      className="mt-trade"
+                      href={`/trade/${toParam(r.symbol)}`}
+                      aria-label={`Trade ${r.symbol} now`}
+                    >
+                      Trade Now
+                    </Link>
                   </div>
                 </div>
               );

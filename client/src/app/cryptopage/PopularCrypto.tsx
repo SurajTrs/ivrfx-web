@@ -2,6 +2,7 @@
 import React from "react";
 import Reveal from "components/Reveal";
 import { popularCrypto } from "app/cryptopage/data";
+import Link from "next/link";
 
 export default function PopularCrypto() {
   return (
@@ -31,6 +32,9 @@ export default function PopularCrypto() {
               </div>
               <h2 className="h1 m-0">Trade the most active crypto markets</h2>
             </div>
+          </Reveal>
+          <Reveal as="a" href="/crypto" className="btn btn-outline-dark btn-sm hover-lift">
+            View all
           </Reveal>
         </div>
 
@@ -64,7 +68,19 @@ export default function PopularCrypto() {
                   </div>
 
                   <div className="d-flex gap-2">
-                    <button className="btn btn-success w-100">Trade</button>
+                    {(() => {
+                      const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\//g, "-"));
+                      const href = `/trade/${toParam(p.symbol)}`;
+                      return (
+                        <Link
+                          href={href}
+                          className="btn btn-success w-100"
+                          aria-label={`Trade ${p.symbol}`}
+                        >
+                          Trade
+                        </Link>
+                      );
+                    })()}
                     <button className="btn btn-outline-secondary w-100">Details</button>
                   </div>
                 </div>

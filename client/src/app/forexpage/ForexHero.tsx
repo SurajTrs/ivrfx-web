@@ -68,14 +68,14 @@ const ForexHero: React.FC = () => {
                 </p>
               </Reveal>
               <div className="d-flex flex-wrap gap-3">
-                <Reveal as="a" href="#popular" className="btn btn-success px-4 hover-lift" delay={0.25}>
+                <Reveal as="a" href="/auth/register" className="btn btn-success px-4 hover-lift" delay={0.25}>
                   Start Trading
                 </Reveal>
-                <Reveal as="a" href="#snapshot" className="btn btn-outline-light px-4 hover-lift" delay={0.35}>
+                <Reveal as="a" href="" className="btn btn-outline-light px-4 hover-lift" delay={0.35}>
                   View Market Snapshot
                 </Reveal>
               </div>
-              {/* Stats */}
+
               <div className="d-flex flex-wrap gap-3 mt-4">
                 <div className="px-3 py-2 rounded-3 bg-dark border border-opacity-25 small text-white-50">
                   <span className="text-white fw-semibold me-1">0.6</span> pips from

@@ -128,9 +128,16 @@ const Navbar: React.FC = () => {
       closeAll();
     };
 
+    const applyBodyOffset = () => {
+      // Ensure body content is not hidden behind fixed navbar
+      const h = (nav as HTMLElement).getBoundingClientRect().height;
+      document.body.style.paddingTop = h + 'px';
+    };
+
     const handleResize = () => {
       if (window.innerWidth >= lgBreakpoint) attach();
       else detach();
+      applyBodyOffset();
     };
 
     handleResize();
@@ -138,10 +145,12 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
       detach();
+      // cleanup padding when navbar unmounts
+      document.body.style.paddingTop = '';
     };
   }, []);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow-sm py-3 sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow-sm py-3 fixed-top">
       <div className="container">
         {/* Brand */}
         <a className="navbar-brand" href="/">
@@ -229,15 +238,7 @@ const Navbar: React.FC = () => {
                     <li><a className="dropdown-item" href="/tools/economic-calendar">Economic Calendar</a></li>
                   </ul>
                 </li>
-                <li className="mega-col">
-                  <h6 className="dropdown-header">Trading Info</h6>
-                  <ul className="list-unstyled m-0">
-                    <li><a className="dropdown-item" href="/trading/cfd-trading">CFD Trading</a></li>
-                    <li><a className="dropdown-item" href="/trading/cfd-asset-list">CFD Asset List</a></li>
-                    <li><a className="dropdown-item" href="/trading/trading-conditions">Trading Conditions</a></li>
-                    <li><a className="dropdown-item" href="/trading/trading-hours">Trading Hours</a></li>
-                  </ul>
-                </li>
+              
               </ul>
             </li>
             <li className="nav-item dropdown">
@@ -252,22 +253,21 @@ const Navbar: React.FC = () => {
                 Learn
               </a>
               <ul className="dropdown-menu dropdown-menu-dark shadow mega-menu" aria-labelledby="learnDropdown">
-                <li className="mega-col">
-                  <h6 className="dropdown-header">Education</h6>
+              <li className="mega-col">
+                  <h6 className="dropdown-header">Trading Info</h6>
                   <ul className="list-unstyled m-0">
-                    <li><a className="dropdown-item" href="/learn/trading-basics">Trading Basics</a></li>
-                    <li><a className="dropdown-item" href="/learn/academy">Academy</a></li>
+                  <li><a className="dropdown-item" href="/learn/trading-basics">Trading Basics</a></li>
+                    <li><a className="dropdown-item" href="/trading/cfd-trading">CFD Trading</a></li>
+                    <li><a className="dropdown-item" href="/trading/cfd-asset-list">CFD Asset List</a></li>
+                    <li><a className="dropdown-item" href="/trading/trading-conditions">Trading Conditions</a></li>
+                    <li><a className="dropdown-item" href="/trading/trading-hours">Trading Hours</a></li>
                   </ul>
                 </li>
+             
                 <li className="mega-col">
-                  <h6 className="dropdown-header">News</h6>
+                  <h6 className="dropdown-header">News & Events</h6>
                   <ul className="list-unstyled m-0">
-                    <li><a className="dropdown-item" href="/news/news">News</a></li>
-                  </ul>
-                </li>
-                <li className="mega-col">
-                  <h6 className="dropdown-header">Events</h6>
-                  <ul className="list-unstyled m-0">
+                  <li><a className="dropdown-item" href="/news/news">News</a></li>
                     <li><a className="dropdown-item" href="/events/traders-clinic">Trader's clinic</a></li>
                     <li><a className="dropdown-item" href="/events/webinars">Webinars</a></li>
                   </ul>

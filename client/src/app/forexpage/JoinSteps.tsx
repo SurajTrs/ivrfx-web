@@ -32,7 +32,7 @@ const JoinSteps: React.FC = () => (
       </div>
 
       <div className="text-center">
-        <Reveal as="a" className="btn btn-success btn-lg mt-4 hover-lift" href="/signup" delay={0.35}>Create an account</Reveal>
+        <Reveal as="a" className="btn btn-success btn-lg mt-4 hover-lift" href="/auth/register" delay={0.35}>Create an account</Reveal>
       </div>
     </div>
   </section>

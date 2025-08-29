@@ -32,8 +32,8 @@ export default function ForexCTA() {
                 <p className="text-muted m-0 mt-2">Tight spreads on majors, powerful tools, and 24/5 markets.</p>
               </div>
               <div className="d-flex gap-2 flex-shrink-0">
-                <a className="btn btn-success px-4" href="#">Create account</a>
-                <a className="btn btn-outline-secondary px-4" href="#">Try demo</a>
+                <a className="btn btn-success px-4" href="/auth/register">Create account</a>
+                <a className="btn btn-outline-secondary px-4" href="/auth/register">Try demo</a>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ export default function TrustFooter() {
   const cols: Array<{ title: string; items: string[] }> = [
     { title: "Markets", items: ["Forex", "Shares", "Commodities", "Indices", "Crypto", "ETFs", "Bonds"] },
     { title: "Trading", items: ["Trading Tools", "Web Platform", "App", "TradingView", "MT4", "MT5"] },
-    { title: "Learn", items: ["News", "Trading Basics", "Glossary", "Webinars", "Traders' Clinic", "Education Centre"] },
+    { title: "Learn", items: ["News", "Trading Basics", "Webinars", "Traders' Clinic"] },
     { title: "About", items: ["Why us", "Global Offering", "Our Group", "Legal Pack", "Complaints", "Contact Support", "Help Centre" ] },
   ];
 
@@ -66,12 +66,8 @@ export default function TrustFooter() {
               <a href="tel:+12845680155" className="fc-link">+1 284 568 0155</a>
             </div>
             <div className="footer-social">
-              <a href="#" aria-label="Facebook" className="soc fb"><FaFacebookF /></a>
-              <a href="#" aria-label="Twitter" className="soc tw"><FaTwitter /></a>
-              <a href="#" aria-label="Instagram" className="soc ig"><FaInstagram /></a>
-              <a href="#" aria-label="YouTube" className="soc yt"><FaYoutube /></a>
-              <a href="#" aria-label="LinkedIn" className="soc li"><FaLinkedinIn /></a>
-              <a href="#" aria-label="TikTok" className="soc tt"><FaTiktok /></a>
+              <a href="https://www.facebook.com/ivrfx?notif_id=1755588699768975&notif_t=profile_plus_admin_invite&ref=notif" aria-label="Facebook" className="soc fb"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/ivrfx1/" aria-label="Instagram" className="soc ig"><FaInstagram /></a>
             </div>
           </div>
 

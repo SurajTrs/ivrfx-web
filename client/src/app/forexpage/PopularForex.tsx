@@ -2,6 +2,7 @@
 import React from "react";
 import Reveal from "components/Reveal";
 import { popularForex } from "app/forexpage/data";
+import Link from "next/link";
 
 export default function PopularForex() {
   return (
@@ -64,7 +65,25 @@ export default function PopularForex() {
                   </div>
 
                   <div className="d-flex gap-2">
-                    <button className="btn btn-success w-100">Trade</button>
+                    {(() => {
+                      const toParam = (s: string) => {
+                        // EUR/USD -> EUR-USD, EURUSD -> EUR-USD
+                        const up = s.toUpperCase();
+                        if (/^[A-Z]{3}\/[A-Z]{3}$/.test(up)) return up.replace("/", "-");
+                        if (/^[A-Z]{6}$/.test(up)) return `${up.slice(0,3)}-${up.slice(3)}`;
+                        return encodeURIComponent(up);
+                      };
+                      const href = `/trade/${toParam(p.symbol)}`;
+                      return (
+                        <Link
+                          href={href}
+                          className="btn btn-success w-100"
+                          aria-label={`Trade ${p.symbol}`}
+                        >
+                          Trade
+                        </Link>
+                      );
+                    })()}
                     <button className="btn btn-outline-secondary w-100">Details</button>
                   </div>
                 </div>

@@ -7,4 +7,7 @@ export const popular = [
   { ticker: "CORN", name: "Corn", sell: "$469.25", buy: "$469.75", change: "+0.08%" },
   { ticker: "COCOA", name: "Cocoa", sell: "$7,220", buy: "$7,240", change: "-0.92%" },
   { ticker: "PALL", name: "Palladium (Spot)", sell: "$1,002.3", buy: "$1,006.1", change: "+0.12%" },
+  { ticker: "PLAT", name: "Platinum (Spot)", sell: "$940.20", buy: "$941.10", change: "+0.24%" },
+  { ticker: "WHEAT", name: "Wheat", sell: "$592.50", buy: "$593.10", change: "-0.18%" },
+  { ticker: "COFFEE", name: "Coffee", sell: "$225.40", buy: "$226.00", change: "+0.41%" },
 ];

@@ -2,6 +2,7 @@
 import React from "react";
 import Reveal from "components/Reveal";
 import { popularEtfs } from "app/etfspage/data";
+import Link from "next/link";
 
 export default function PopularEtfs() {
   return (
@@ -30,6 +31,9 @@ export default function PopularEtfs() {
               </div>
               <h2 className="h1 m-0">Trade the most active ETFs</h2>
             </div>
+          </Reveal>
+          <Reveal as="a" href="/etfs" className="btn btn-outline-dark btn-sm hover-lift">
+            View all
           </Reveal>
         </div>
 
@@ -71,7 +75,20 @@ export default function PopularEtfs() {
                   </div>
 
                   <div className="d-flex gap-2">
-                    <button className="btn w-100" style={{ background: "#9b51e0", color: "#fff", borderColor: "#9b51e0" }}>Trade</button>
+                    {(() => {
+                      const toParam = (s: string) => encodeURIComponent(s.toUpperCase().replace(/\//g, "-"));
+                      const href = `/trade/${toParam(p.symbol)}`;
+                      return (
+                        <Link
+                          href={href}
+                          className="btn w-100"
+                          style={{ background: "#9b51e0", color: "#fff", borderColor: "#9b51e0" }}
+                          aria-label={`Trade ${p.symbol}`}
+                        >
+                          Trade
+                        </Link>
+                      );
+                    })()}
                     <button className="btn w-100" style={{ background: "transparent", color: "#9b51e0", border: "1px solid rgba(155,81,224,0.5)" }}>Details</button>
                   </div>
                 </div>
