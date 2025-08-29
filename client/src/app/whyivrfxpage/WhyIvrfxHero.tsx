@@ -52,7 +52,7 @@ export default function Hero() {
             <div className="col-12 col-lg-5">
               <div className="position-relative text-center">
                 <img
-                  src="/images/placeholder-app.png"
+                  src="/images/trading-illustration.png"
                   alt="Trading platforms"
                   className="img-fluid rounded-3 shadow"
                 />

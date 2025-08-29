@@ -17,7 +17,7 @@ export default function CFDFeatures() {
           <div className="col-12 col-lg-6">
             <Reveal>
               <div className="illustration-box rounded-4 border overflow-hidden mb-3 mb-lg-0 hover-lift tilt-card shine-sweep">
-                <img src="/images/cfd-4.jpg" alt="Platform features" className="w-100 h-100 object-cover" />
+                <img src="/images/trading-illustration1.png" alt="Platform features" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration.png"; }} />
               </div>
             </Reveal>
           </div>

@@ -185,7 +185,7 @@ export default function MostTraded() {
         </div>
       </div>
       <div className="mt-cta-bottom">
-        <a href="/auth/register" className="start-btn" aria-label="Start trading now by registering an account">Start Trading Now</a>
+        <a href="/trade" className="start-btn" aria-label="Open trading workspace">Start Trading Now</a>
       </div>
     </section>
   );

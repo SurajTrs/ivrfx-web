@@ -70,12 +70,12 @@ const TradingAppHero: React.FC = () => {
                   transform: "translateZ(0)"
                 }} />
                 <img 
-                  src="/images/app-preview.png" 
+                  src="/images/trading-illustration1.png" 
                   alt="Trading app interface" 
                   className="img-fluid rounded-4 shadow-lg hover-lift position-relative" 
                   style={{ zIndex: 1 }}
                   onError={(e) => {
-                    e.currentTarget.src = '/images/placeholder-app.png';
+                    e.currentTarget.src = '/images/trading-illustration.png';
                   }}
                 />
               </div>

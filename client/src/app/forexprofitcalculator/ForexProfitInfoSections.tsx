@@ -15,7 +15,7 @@ export default function ForexProfitInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden">
-              <img src="/images/forex-1.jpg" alt="How Forex Profit Calculator works" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration.png" alt="How Forex Profit Calculator works" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration1.png"; }} />
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ export default function ForexProfitInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden">
-              <img src="/images/forex-2.jpg" alt="How profit is calculated in Forex" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration1.png" alt="How profit is calculated in Forex" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration.png"; }} />
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function ForexProfitInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden">
-              <img src="/images/forex-3.jpg" alt="Make informed Forex decisions" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration.png" alt="Make informed Forex decisions" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration1.png"; }} />
             </div>
           </div>
         </div>

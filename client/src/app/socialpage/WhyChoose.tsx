@@ -51,18 +51,18 @@ const WhyChoose: React.FC = () => {
                   aria-hidden
                 />
                 <img
-                  src="/images/app-preview.png"
+                  src="/images/trading-illustration1.png"
                   alt="App preview 1"
                   className="img-fluid rounded-4 shadow-lg position-relative"
                   style={{ transform: "rotate(-6deg) translateX(-10px)", zIndex: 1 }}
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/placeholder-app.png"; }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/trading-illustration.png"; }}
                 />
                 <img
-                  src="/images/app-preview.png"
+                  src="/images/trading-illustration.png"
                   alt="App preview 2"
                   className="img-fluid rounded-4 shadow-lg position-absolute"
                   style={{ top: 28, left: 48, width: "82%", transform: "rotate(8deg)", zIndex: 2 }}
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/placeholder-app.png"; }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/trading-illustration1.png"; }}
                 />
               </div>
             </div>

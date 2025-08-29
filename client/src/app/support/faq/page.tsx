@@ -79,7 +79,7 @@ export default function FAQLandingPage() {
             </p>
           </div>
           <div className="d-flex justify-content-center gap-3">
-            <Link href="/support" className="btn px-4" style={{ backgroundColor: "#7c3aed", borderColor: "#7c3aed", color: "#fff" }}>
+            <Link href="/support/contact-support" className="btn px-4" style={{ backgroundColor: "#7c3aed", borderColor: "#7c3aed", color: "#fff" }}>
               Contact Support
             </Link>
             <a href="mailto:support@example.com" className="btn btn-outline-primary px-4">

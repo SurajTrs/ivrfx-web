@@ -23,7 +23,7 @@ export default function CFDTradingInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden hover-lift">
-              <img src="/images/cfd-1.jpg" alt="Trade CFDs across markets" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration.png" alt="Trade CFDs across markets" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration1.png"; }} />
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function CFDTradingInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden hover-lift">
-              <img src="/images/cfd-2.jpg" alt="Markets you can trade with CFDs" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration1.png" alt="Markets you can trade with CFDs" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration.png"; }} />
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function CFDTradingInfoSections() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="illustration-box rounded-4 border overflow-hidden hover-lift">
-              <img src="/images/cfd-3.jpg" alt="Get started in minutes" className="w-100 h-100 object-cover" />
+              <img src="/images/trading-illustration.png" alt="Get started in minutes" className="w-100 h-100 object-cover" onError={(e) => { e.currentTarget.src = "/images/trading-illustration1.png"; }} />
             </div>
           </div>
         </div>

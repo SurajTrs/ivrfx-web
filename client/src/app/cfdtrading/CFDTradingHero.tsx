@@ -65,7 +65,7 @@ const CFDTradingHero: React.FC = () => {
           <div className="col-12 col-lg-5">
             <Reveal delay={0.2}>
               <div className="tilt-card shine-sweep rounded-4 shadow-lg">
-                <img src="/images/cfd-hero.jpg" alt="CFD trading platform" className="img-fluid rounded-4" />
+                <img src="/images/trading-illustration.png" alt="CFD trading platform" className="img-fluid rounded-4" onError={(e) => { e.currentTarget.src = "/images/trading-illustration1.png"; }} />
               </div>
             </Reveal>
           </div>
