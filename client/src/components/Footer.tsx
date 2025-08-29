@@ -93,10 +93,9 @@ export default function TrustFooter() {
         {/* Bottom bar */}
         <div className="footer-bottom">
           <div className="footer-legal">
-            <a href="#">Legal Pack</a>
-            <a href="#">Cookie Disclosure</a>
-            <a href="#">Safety Online</a>
-            <a href="#">Privacy Policy</a>
+            <a href="/legal/data-security">Legal Pack</a>
+            <a href="/legal/data-security">Safety Online</a>
+            <a href="/legal/data-security">Privacy Policy</a>
           </div>
           <div className="footer-payments">
             <span className="pm visa" aria-label="Visa"><FaCcVisa /></span>
