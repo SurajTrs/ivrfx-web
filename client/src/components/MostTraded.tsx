@@ -187,6 +187,55 @@ export default function MostTraded() {
       <div className="mt-cta-bottom">
         <a href="/trade" className="start-btn" aria-label="Open trading workspace">Start Trading Now</a>
       </div>
+
+      <style jsx>{`
+        /* Layout */
+        .mt-wrap { padding: 16px; }
+        .mt-card { display: flex; gap: 16px; }
+        .mt-nav { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; }
+        .mt-table { flex: 1; min-width: 0; }
+
+        /* Header & rows */
+        .mt-head { display: grid; grid-template-columns: 1.2fr 1.8fr auto; gap: 12px; padding: 8px 12px; font-size: 14px; color: #6b7280; }
+        .mt-body { display: grid; gap: 12px; }
+        .mt-row { display: grid; grid-template-columns: 1.2fr 1.8fr auto; align-items: center; gap: 12px; padding: 12px; border-radius: 14px; background: rgba(255,255,255,0.6); }
+
+        .mt-asset { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .mt-avatar { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: #EEF2FF; color: #4F46E5; font-weight: 600; }
+        .mt-name { display: flex; flex-direction: column; min-width: 0; }
+        .mt-name strong { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .mt-sym { font-size: 12px; color: #6b7280; }
+
+        /* Chart */
+        .mt-chart { min-width: 0; }
+        .tv-mini { width: 100%; height: 56px; }
+
+        /* CTA */
+        .mt-cta { display: flex; justify-content: flex-end; }
+        .mt-trade { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; background: linear-gradient(90deg, #7C3AED, #6366F1); color: #fff; text-decoration: none; font-weight: 600; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+          .mt-card { flex-direction: column; }
+          .mt-nav { width: auto; flex-direction: row; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+          .mt-nav::-webkit-scrollbar { height: 6px; }
+          .mt-nav::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 999px; }
+
+          .mt-head { grid-template-columns: 1fr auto; }
+          .mt-head span:nth-child(2) { display: none; } /* hide Chart header text on small screens */
+
+          .mt-row { grid-template-columns: 1fr auto; }
+          .mt-chart { grid-column: 1 / -1; } /* chart takes full width below asset */
+          .tv-mini { height: 64px; }
+
+          .mt-cta { grid-column: 1 / -1; }
+          .mt-trade { width: 100%; }
+        }
+
+        @media (max-width: 600px) {
+          .tv-mini { height: 72px; }
+        }
+      `}</style>
     </section>
   );
 }

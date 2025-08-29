@@ -293,12 +293,22 @@ const Navbar: React.FC = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Partnerships
+                Support
               </a>
               <ul className="dropdown-menu dropdown-menu-dark shadow mt-4" aria-labelledby="partnershipsDropdown">
-                <li><a className="dropdown-item" href="/partnerships/affiliation">Affiliation</a></li>
-                <li><a className="dropdown-item" href="/partnerships/ib">IB</a></li>
+               
+                <li className="mega-col">
+                  <h6 className="dropdown-header">Support</h6>
+                  <ul className="list-unstyled m-0">
+                  <li><a className="dropdown-item" href="/partnerships/affiliation">Affiliation</a></li>
+                  <li><a className="dropdown-item" href="/partnerships/ib">IB</a></li>
+                    <li><a className="dropdown-item" href="/support/faq">FAQ</a></li>
+                    <li><a className="dropdown-item" href="/support/help-centre">Help Centre</a></li>
+                    <li><a className="dropdown-item" href="/support/contact-support">Contact Support</a></li>
+                  </ul>
+                </li>
               </ul>
+              
             </li>
             <li className="nav-item dropdown">
               <a
@@ -320,14 +330,7 @@ const Navbar: React.FC = () => {
                     <li><a className="dropdown-item" href="/about/our-group">Our Group</a></li>
                   </ul>
                 </li>
-                <li className="mega-col">
-                  <h6 className="dropdown-header">Support</h6>
-                  <ul className="list-unstyled m-0">
-                    <li><a className="dropdown-item" href="/support/faq">FAQ</a></li>
-                    <li><a className="dropdown-item" href="/support/help-centre">Help Centre</a></li>
-                    <li><a className="dropdown-item" href="/support/contact-support">Contact Support</a></li>
-                  </ul>
-                </li>
+              
                 <li className="mega-col">
                   <h6 className="dropdown-header">Legal & Security</h6>
                   <ul className="list-unstyled m-0">
