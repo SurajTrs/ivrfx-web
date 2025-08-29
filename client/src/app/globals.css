@@ -192,6 +192,16 @@ html, body { overflow-x: hidden; }
   transform: rotate(180deg);
 }
 
+/* Top-level navbar menu item text color (Markets, Trading, Learn, Support, About) */
+.navbar .navbar-nav > .nav-item > .nav-link {
+  color: #ffffff !important;
+}
+.navbar .navbar-nav > .nav-item > .nav-link:hover,
+.navbar .navbar-nav > .nav-item > .nav-link:focus,
+.navbar .navbar-nav > .nav-item > .nav-link.active {
+  color: #ffffff !important;
+}
+
 /* Platforms section - global styles */
 .platform-card-wrap {
   position: relative;

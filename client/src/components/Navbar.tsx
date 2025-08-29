@@ -191,7 +191,7 @@ const Navbar: React.FC = () => {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="/"
                 id="marketsDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
